@@ -1,1 +1,1 @@
-# student-directoru
+# student-directory
