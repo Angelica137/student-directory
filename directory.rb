@@ -43,9 +43,19 @@ def print_first_letter(prefix)
   #this only works if prefix is with capital, need to fix it so it works for non capitals too
 end
 
+def print_short_name
+  puts "Want to see short names?"
+  answer = gets.chomp
+  if answer == 'yes'
+    puts @students.select { |student| student[:name].length < 12}
+  else
+    puts nil
+  end
+end
+
 @students = input_students
 print_header
 print(@students)
 print_footer(@students)
 print_first_letter(@students)
-
+print_short_name
