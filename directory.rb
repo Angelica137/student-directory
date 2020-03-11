@@ -12,7 +12,18 @@ def input_students
 #   @students << {name: name, cohort: :november}
     puts "What are their hobbies?"
     hobbies = gets.chomp
-    @students <<{name: name, hobbies: hobbies, cohort: :november}
+    puts "Enter their date of birth"
+    dob = gets.chomp
+    puts "Enter country of birth"
+    country_of_birth = gets.chomp
+    puts "Enter their height"
+    height = gets.chomp
+    @students <<{name: name, 
+      hobbies: hobbies, 
+      dob: dob,
+      country_of_birth: country_of_birth,
+      height: height,
+      cohort: :november}
     puts "Now we have #{@students.count} students"
     #try to add extra information once student list has been created.
     puts "Do you want to add another student? To finish hit return twice."
@@ -54,7 +65,6 @@ def print_first_letter(prefix)
   prefix = gets.chomp
   puts @students.select { |student| student[:name].start_with? prefix}
   #this only works if prefix is with capital, need to fix it so it works for non capitals too
-  #also, what happens if the user wants to quit here?
 end
 
 def print_short_name
