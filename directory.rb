@@ -10,6 +10,14 @@ def input_students
   while !name.empty? do
     #add the student hash to the array
 #   @students << {name: name, cohort: :november}
+# change the above hard code to allow user input cohort
+# and added default value if empty
+    puts "Enter their cohort"
+    cohort = gets.chomp
+    if cohort.empty?
+      cohort = 'default'
+    end
+
     puts "What are their hobbies?"
     hobbies = gets.chomp
     puts "Enter their date of birth"
@@ -18,12 +26,13 @@ def input_students
     country_of_birth = gets.chomp
     puts "Enter their height"
     height = gets.chomp
-    @students <<{name: name, 
+    @students << {name: name, 
       hobbies: hobbies, 
       dob: dob,
       country_of_birth: country_of_birth,
       height: height,
-      cohort: :november}
+      cohort: cohort}
+#      cohort = 'default' if cohort.nil?
     puts "Now we have #{@students.count} students"
     #try to add extra information once student list has been created.
     puts "Do you want to add another student? To finish hit return twice."
@@ -33,26 +42,25 @@ def input_students
   @students
 end
 
-
 #and then we print them
 def print_header
-  puts "The students of Villains Academy"
-  puts "------------------"
+  puts "The students of Villains Academy".center(150)
+  puts "------------------".center(150)
 end
 
 #replaced iterator with while loop. Think iterator is better. Check and amend if 
 #needed
 def print(students)
-  count = 0
-  while count <= @students.length do
-    puts @students[count]#.key
-    count += 1
-  end
-#    @students.each_with_index() do |student, i|
-#     index = i+1
-#      puts "#{index}. for #{student[:name]} (#{student[:cohort]} cohort)"
-#    end
+#  count = 0
+#  while count <= @students.length do
+#    puts @students[count].center(18)#.key
+#    count += 1
 #  end
+#used string to center text
+    @students.each_with_index() do |student, i|
+    index = i+1
+      puts "#{index}. for #{student[:name]} (#{student[:cohort]} cohort)".center(150)
+    end
 end
 
 #finally, we print the total number of students
