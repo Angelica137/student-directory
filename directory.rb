@@ -17,6 +17,8 @@ def input_students
     if cohort.empty?
       cohort = 'default'
     end
+    #make string into symbol
+    cohort.to_sym
 
     puts "What are their hobbies?"
     hobbies = gets.chomp
