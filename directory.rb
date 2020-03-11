@@ -83,9 +83,22 @@ def print_short_name
   if answer == 'yes'
     puts @students.select { |student| student[:name].length < 12}
   else
-    puts 'bye'
+    print nil
   end
 end
+
+def print_cohort
+  puts "Enter cohort to search."
+  cohort = gets.chomp
+
+  @students.each do |hash|
+    if hash[:cohort] == cohort
+      puts hash#[:name]
+    end
+  end
+end
+
+
 
 @students = input_students
 print_header
@@ -93,3 +106,7 @@ print(@students)
 print_footer(@students)
 print_first_letter(@students)
 print_short_name
+print_cohort
+
+#8. print users grouped by cohorts
+
