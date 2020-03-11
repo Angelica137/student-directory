@@ -19,7 +19,6 @@ def input_students
     end
     #make string into symbol
     cohort.to_sym
-
     puts "What are their hobbies?"
     hobbies = gets.chomp
     puts "Enter their date of birth"
@@ -35,7 +34,11 @@ def input_students
       height: height,
       cohort: cohort}
 #      cohort = 'default' if cohort.nil?
-    puts "Now we have #{@students.count} students"
+    if @students.count != 1
+      puts "Now we have #{@students.count} students"
+    else
+      puts "Now we have #{@students.count} student"
+    end
     #try to add extra information once student list has been created.
     puts "Do you want to add another student? To finish hit return twice."
     #get another name from the user
@@ -93,7 +96,7 @@ def print_cohort
 
   @students.each do |hash|
     if hash[:cohort] == cohort
-      puts hash#[:name]
+      puts hash
     end
   end
 end
