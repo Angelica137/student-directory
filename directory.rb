@@ -5,7 +5,8 @@ def input_students
   #create an empty array
   @students = []  
   #get the first name
-  name = gets.chomp
+  #10. Replace chomp for a different method
+  name = gets.strip
   #while the name is not empty, repeat this code
   while !name.empty? do
     #add the student hash to the array
@@ -13,20 +14,20 @@ def input_students
 # change the above hard code to allow user input cohort
 # and added default value if empty
     puts "Enter their cohort"
-    cohort = gets.chomp
+    cohort = gets.strip
     if cohort.empty?
       cohort = 'default'
     end
     #make string into symbol
     cohort.to_sym
     puts "What are their hobbies?"
-    hobbies = gets.chomp
+    hobbies = gets.strip
     puts "Enter their date of birth"
-    dob = gets.chomp
+    dob = gets.strip
     puts "Enter country of birth"
-    country_of_birth = gets.chomp
+    country_of_birth = gets.strip
     puts "Enter their height"
-    height = gets.chomp
+    height = gets.strip
     @students << {name: name, 
       hobbies: hobbies, 
       dob: dob,
