@@ -19,8 +19,12 @@ def input_students
 end
 
 def print_header
-  puts "The students of my cohort at Makers Academy"
-  puts "-------------"
+  if @students.count > 0 
+    puts "The students of my cohort at Makers Academy"
+    puts "-------------"
+  else
+    print nil
+  end
 end
 
 def print(student)
