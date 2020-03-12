@@ -1,3 +1,30 @@
+#create interarctive method
+def interactive_menu
+  students = []
+  loop do
+    #1. print the menu and ask the suer what to do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit"
+    #2. read th einput and save it to a variable
+    selection = gets.chomp
+    #3. do what the user has asked
+    case selection
+      when "1"
+      students = input_students
+      when "2"
+        print_header
+        print(students)
+        print_footer(students)
+      when "9"
+        exit
+      else
+        puts "I do not know what yo meant, try again"
+    end
+  end
+end
+
+
 #let the user input names
 def input_students
   puts  "Please enter the names of the students"
@@ -9,10 +36,7 @@ def input_students
   name = gets.strip
   #while the name is not empty, repeat this code
   while !name.empty? do
-    #add the student hash to the array
-#   @students << {name: name, cohort: :november}
-# change the above hard code to allow user input cohort
-# and added default value if empty
+
     puts "Enter their cohort"
     cohort = gets.strip
     if cohort.empty?
@@ -20,6 +44,7 @@ def input_students
     end
     #make string into symbol
     cohort.to_sym
+    #add extra information
     puts "What are their hobbies?"
     hobbies = gets.strip
     puts "Enter their date of birth"
@@ -28,13 +53,15 @@ def input_students
     country_of_birth = gets.strip
     puts "Enter their height"
     height = gets.strip
+
+    #add the student hash to the array
     @students << {name: name, 
       hobbies: hobbies, 
       dob: dob,
       country_of_birth: country_of_birth,
       height: height,
       cohort: cohort}
-#      cohort = 'default' if cohort.nil?
+
     if @students.count != 1
       puts "Now we have #{@students.count} students"
     else
@@ -65,13 +92,13 @@ def print(students)
 #used string to center text
     @students.each_with_index() do |student, i|
     index = i+1
-      puts "#{index}. for #{student[:name]} (#{student[:cohort]} cohort)".center(150)
+      puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)".center(150)
     end
 end
 
 #finally, we print the total number of students
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "Overall, we have #{students.count} great students"#.center(150)
 end
 
 def print_first_letter(prefix)
@@ -104,7 +131,8 @@ end
 
 
 
-@students = input_students
+interactive_menu
+#@students = input_students
 print_header
 print(@students)
 print_footer(@students)
