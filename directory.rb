@@ -1,36 +1,11 @@
-#create interarctive method
-def interactive_menu
-  students = []
-  loop do
-    #1. print the menu and ask the suer what to do
-    puts "1. Input the students"
-    puts "2. Show the students"
-    puts "9. Exit"
-    #2. read th einput and save it to a variable
-    selection = gets.chomp
-    #3. do what the user has asked
-    case selection
-      when "1"
-      students = input_students
-      when "2"
-        print_header
-        print(students)
-        print_footer(students)
-      when "9"
-        exit
-      else
-        puts "I do not know what yo meant, try again"
-    end
-  end
-end
-
+@students = [] #an empty array accessible to all methods
 
 #let the user input names
 def input_students
   puts  "Please enter the names of the students"
   puts "To finish, just hit return twice."
   #create an empty array
-  @students = []  
+#  @students = []  
   #get the first name
   #10. Replace chomp for a different method
   name = gets.strip
@@ -83,7 +58,7 @@ end
 
 #replaced iterator with while loop. Think iterator is better. Check and amend if 
 #needed
-def print(students)
+def print_student_list
 #  count = 0
 #  while count <= @students.length do
 #    puts @students[count].center(18)#.key
@@ -97,8 +72,8 @@ def print(students)
 end
 
 #finally, we print the total number of students
-def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(150)
+def print_footer
+  puts "Overall, we have #{@students.count} great students".center(150)
 end
 
 def print_first_letter(prefix)
@@ -129,16 +104,38 @@ def print_cohort
   end
 end
 
+#create interarctive method
+def print_menu
+  puts "1. Input the students"
+  puts "2. Show the students"
+  puts "9. Exit"
+end
+
+def show_students
+  print_header
+  print_student_list
+  print_footer
+end
+
+def process(selection)
+  case selection
+    when "1"
+      students = input_students
+    when "2"
+      show_students
+    when "9"
+      exit
+    else
+      puts "I do not know what yo meant, try again"
+    end
+end
+
+def interactive_menu
+  loop do
+    print_menu
+    process(gets.chomp)
+  end
+end
 
 
 interactive_menu
-#@students = input_students
-print_header
-print(@students)
-print_footer(@students)
-print_first_letter(@students)
-print_short_name
-print_cohort
-
-#8. print users grouped by cohorts
-
