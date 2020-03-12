@@ -108,6 +108,7 @@ end
 def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
+  puts "3. Save the list to students.csv"
   puts "9. Exit"
 end
 
@@ -123,6 +124,8 @@ def process(selection)
       students = input_students
     when "2"
       show_students
+    when "3"
+      save_students
     when "9"
       exit
     else
@@ -137,5 +140,20 @@ def interactive_menu
   end
 end
 
+def save_students
+  #open the file for writing
+  file = File.open("students.csv", "w")
+  #iterate over the array of students
+  @students.each do |student|
+    #for each hash, we create a new array
+    student_data = [student[:name], student[:cohort]]
+    #then we convert it to a comma separated string
+    csv_line = student_data.join(",")
+    #write the var csv_line to the file using puts
+    #this puts it to the file and not the screen
+    file.puts csv_line
+  end
+  file.close
+end
 
 interactive_menu
