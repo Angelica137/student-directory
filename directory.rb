@@ -98,7 +98,7 @@ end
 
 #finally, we print the total number of students
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"#.center(150)
+  puts "Overall, we have #{students.count} great students".center(150)
 end
 
 def print_first_letter(prefix)
