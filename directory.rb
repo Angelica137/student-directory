@@ -73,7 +73,11 @@ end
 
 #finally, we print the total number of students
 def print_footer
-  puts "Overall, we have #{@students.count} great students".center(150)
+  if @students.count != 1
+    puts "Overall, we have #{@students.count} great students".center(150)
+  else
+    puts "Overall, we have #{@students.count} great student".center(150)
+  end
 end
 
 def print_first_letter(prefix)
